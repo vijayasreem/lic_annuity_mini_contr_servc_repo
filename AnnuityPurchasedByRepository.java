@@ -17,4 +17,7 @@ public interface AnnuityPurchasedByRepository extends JpaRepository<AnnuityPurch
 	
 	@Query("SELECT DISTINCT a FROM AnnuityPurchasedBy a WHERE a.annuityCode = :code AND a.name = :name")
 	public Optional<AnnuityPurchasedBy> findByCodeAndName(String code, String name);
+	
+	@Query("SELECT DISTINCT a FROM AnnuityPurchasedBy a WHERE a.name = :name")
+	public Optional<AnnuityPurchasedBy> findByName(String name);
 }
