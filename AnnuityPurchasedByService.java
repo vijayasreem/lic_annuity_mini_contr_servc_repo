@@ -11,5 +11,7 @@ public interface AnnuityPurchasedByService {
 	public AnnuityPurchasedBy getAnnuityPurchasedByById(long id);
 
 	public AnnuityPurchasedBy findByCode(String code);
+	
+	public AnnuityPurchasedBy findByCodeAndName(String code, String name);
 
 }
