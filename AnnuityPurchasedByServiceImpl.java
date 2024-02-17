@@ -50,21 +50,7 @@ public class AnnuityPurchasedByServiceImpl implements AnnuityPurchasedByService 
 	}
 
 	@Override
-	public AnnuityPurchasedBy findByCode(String code) {
-		String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
-		Optional<AnnuityPurchasedBy> annuitypurchasedbyDb = this.annuityPurchasedByRepository.findByCode(code);
-		LoggingUtil.logInfo(className, methodName, "Started");
-		LoggingUtil.logInfo(className, methodName, "Search for AnnuityPurchasedBy By code: " + code);
-		if (annuitypurchasedbyDb.isPresent()) {
-			logger.info("AnnuityPurchasedBy is found with code: " + code);
-			return annuitypurchasedbyDb.get();
-		} else {
-			throw new ResourceNotFoundException("AnnuityPurchasedBy not found with code: " + code);
-		}
-	}
-
-	@Override
-	public AnnuityPurchasedBy findByCodeAndName(String code, String name) {
+	public AnnuityPurchasedBy findByCode(String code, String name) {
 		String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
 		Optional<AnnuityPurchasedBy> annuitypurchasedbyDb = this.annuityPurchasedByRepository.findByCodeAndName(code, name);
 		LoggingUtil.logInfo(className, methodName, "Started");
