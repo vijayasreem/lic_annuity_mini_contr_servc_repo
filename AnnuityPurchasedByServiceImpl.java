@@ -27,7 +27,6 @@ public class AnnuityPurchasedByServiceImpl implements AnnuityPurchasedByService 
 
 	@Override
 	public List<AnnuityPurchasedBy> getAllAnnuityPurchasedBy() {
-		// TODO Auto-generated method stub
 		String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
 
 		logger.info("i get AnnuityPurchasedBy list ");
@@ -38,13 +37,12 @@ public class AnnuityPurchasedByServiceImpl implements AnnuityPurchasedByService 
 
 	@Override
 	public AnnuityPurchasedBy getAnnuityPurchasedByById(long id) {
-		// TODO Auto-generated method stub
 		String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
 		Optional<AnnuityPurchasedBy> annuitypurchasedbyDb = this.annuityPurchasedByRepository.findById(id);
 		LoggingUtil.logInfo(className, methodName, "Started");
 		LoggingUtil.logInfo(className, methodName, "Search for AnnuityPurchasedBy By Id: " + id);
 		if (annuitypurchasedbyDb.isPresent()) {
-			logger.info("AnnuityPurchasedBy is  found with id: " + id);
+			logger.info("AnnuityPurchasedBy is found with id: " + id);
 			return annuitypurchasedbyDb.get();
 		} else {
 			throw new ResourceNotFoundException("AnnuityPurchasedBy not found with id: " + id);
@@ -53,16 +51,29 @@ public class AnnuityPurchasedByServiceImpl implements AnnuityPurchasedByService 
 
 	@Override
 	public AnnuityPurchasedBy findByCode(String code) {
-		// TODO Auto-generated method stub
 		String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
 		Optional<AnnuityPurchasedBy> annuitypurchasedbyDb = this.annuityPurchasedByRepository.findByCode(code);
 		LoggingUtil.logInfo(className, methodName, "Started");
 		LoggingUtil.logInfo(className, methodName, "Search for AnnuityPurchasedBy By code: " + code);
 		if (annuitypurchasedbyDb.isPresent()) {
-			logger.info("AnnuityPurchasedBy is  found with code: " + code);
+			logger.info("AnnuityPurchasedBy is found with code: " + code);
 			return annuitypurchasedbyDb.get();
 		} else {
-			throw new ResourceNotFoundException("AnnuityPurchasedBy not found with code: "  + code);
+			throw new ResourceNotFoundException("AnnuityPurchasedBy not found with code: " + code);
+		}
+	}
+
+	@Override
+	public AnnuityPurchasedBy findByCodeAndName(String code, String name) {
+		String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
+		Optional<AnnuityPurchasedBy> annuitypurchasedbyDb = this.annuityPurchasedByRepository.findByCodeAndName(code, name);
+		LoggingUtil.logInfo(className, methodName, "Started");
+		LoggingUtil.logInfo(className, methodName, "Search for AnnuityPurchasedBy By code: " + code + " and name: " + name);
+		if (annuitypurchasedbyDb.isPresent()) {
+			logger.info("AnnuityPurchasedBy is found with code: " + code + " and name: " + name);
+			return annuitypurchasedbyDb.get();
+		} else {
+			throw new ResourceNotFoundException("AnnuityPurchasedBy not found with code: " + code + " and name: " + name);
 		}
 	}
 
